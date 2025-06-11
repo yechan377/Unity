@@ -1,16 +1,31 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Inventory : MonoBehaviour
+public class ToggleInventoryActive : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private GameObject[] inventoryObjects;
+    private bool isHidden = false;
+
     void Start()
     {
-        
+        inventoryObjects = GameObject.FindGameObjectsWithTag("Inventory");
+
+        foreach (GameObject obj in inventoryObjects)
+        {
+            obj.SetActive(isHidden);
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            isHidden = !isHidden;
+
+            foreach (GameObject obj in inventoryObjects)
+            {
+                obj.SetActive(isHidden);
+            }
+        }
     }
 }
