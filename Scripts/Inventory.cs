@@ -18,7 +18,7 @@ public class ToggleInventoryActive : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
+        if (Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame)
         {
             isHidden = !isHidden;
 
